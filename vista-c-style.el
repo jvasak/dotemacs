@@ -1,8 +1,12 @@
 ;;; vista-c-style.el 
 ;;
-;; Based on:
+;; Modified google-c-style to indent 4 spaces, not two.  Renamed to
+;; vista to avoid conflicts with anyone whoe wants to use
+;; both. (source:
+;; http://google-styleguide.googlecode.com/svn/trunk/google-c-style.el):
 ;;
-;; google-c-style.el --- Google's C/C++ style for c-mode
+
+;;; google-c-style.el --- Google's C/C++ style for c-mode
 
 ;; Keywords: c, tools
 

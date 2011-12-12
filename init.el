@@ -1,14 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Library Paths
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/.emacs.d")
-;Add all top-level subdirectories of .emacs.d to the load path
-(progn (cd "~/.emacs.d")
-       (normal-top-level-add-subdirs-to-load-path))
-;I like to keep third party libraries seperate in ~/.emacs.d/vendor
-(add-to-list 'load-path "~/.emacs.d/vendor")
-(progn (cd "~/.emacs.d/vendor")
-       (normal-top-level-add-subdirs-to-load-path))
+;; Recursively add subdirs to path, but don't change emacs
+;; perminantly into subdir on load
+(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+    (let* ((my-lisp-dir "~/.emacs.d/")
+           (default-directory my-lisp-dir))
+      (setq load-path (cons my-lisp-dir load-path))
+      (normal-top-level-add-subdirs-to-load-path)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Interface stuff
@@ -51,6 +50,11 @@
 (load-library "jsv-twitter")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org-mode setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load-library "jsv-org")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; One-time stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
@@ -66,7 +70,7 @@
  '(delete-selection-mode t)
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
-  '(line-number-mode t)
+ '(line-number-mode t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
