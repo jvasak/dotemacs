@@ -20,7 +20,7 @@
 (setq org-agenda-tags-column -100)
 (setq org-use-fast-todo-selection t)
 (setq org-use-tag-inheritance t)
-(setq org-agenda-span 1)
+(setq org-agenda-span 3)
 (setq org-agenda-repeating-timestamp-show-all t)
 (setq org-agenda-show-all-dates t)
 (setq org-agenda-skip-deadline-if-done t)
@@ -90,15 +90,23 @@
 
 ;; Define keywords and state transitions
 (setq org-todo-keywords (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+                                (sequence "BUILD(b!)" "MAP-COPY(m!)" "BURN-IN(B!)" "TIE-DOWN(T!)" "|" "DELIVERED(D!)")
                                 (sequence "WAITING(W)" "SOMEDAY(S)" "PROJECT(P)" "|" "CANCELLED(C)"))))
 
-(setq org-todo-keyword-faces (quote (("TODO" :foreground "red" :weight bold)
- ("STARTED" :foreground "blue" :weight bold)
- ("DONE" :foreground "forest green" :weight bold)
- ("WAITING" :foreground "orange" :weight bold)
- ("SOMEDAY" :foreground "magenta" :weight bold)
- ("CANCELLED" :foreground "forest green" :weight bold)
- ("PROJECT" :foreground "dark cyan" :weight bold))))
+(setq org-todo-keyword-faces (quote (
+                                     ("TODO" :foreground "red" :weight bold)
+                                     ("STARTED" :foreground "blue" :weight bold)
+                                     ("DONE" :foreground "forest green" :weight bold)
+                                     ("WAITING" :foreground "orange" :weight bold)
+                                     ("SOMEDAY" :foreground "magenta" :weight bold)
+                                     ("CANCELLED" :foreground "forest green" :weight bold)
+                                     ("PROJECT" :foreground "dark cyan" :weight bold)
+                                     ("BUILD" :foreground "red" :weight bold)
+                                     ("MAP_COPY" :foreground "orange" :weight bold)
+                                     ("BURN-IN" :foreground "yellow" :weight bold)
+                                     ("TIE-DOWN" :foreground "blue" :weight bold)
+                                     ("DELIVERED" :foreground "violet" :weight bold)
+                                     )))
 
 ;;(setq org-todo-state-tags-triggers
 ;;      (quote (("CANCELLED" ("CANCELLED" . t))
@@ -173,6 +181,7 @@
         ("w" "Standard Agenda View"
          ((agenda "" ((org-deadline-warning-days 0)))
           (tags-todo "NEXT")
+          (tags-todo "CATEGORY=\"production\"-TODO=\"PROJECT\"")
           (tags-todo "-NEXT+TODO=\"TODO\"|-NEXT+TODO=\"STARTED\"")
           (tags-todo "TODO=\"WAITING\"")
           )
