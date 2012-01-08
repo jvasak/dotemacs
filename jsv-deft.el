@@ -1,3 +1,5 @@
 (require 'deft)
 (setq deft-directory "~/Dropbox/notes")
+(setq deft-extension "org")
+(setq deft-text-mode 'org-mode)
 (global-set-key [f1] 'deft)
