@@ -19,7 +19,7 @@
       '((width . 120)
 	(height . 74) 
 	(alpha 85 50) 
-	(font . "Ubuntu Mono-10:regular")))
+	(font . "Liberation Mono-10:regular")))
 
 ;; set up pleasing color theme
 (require 'color-theme)
