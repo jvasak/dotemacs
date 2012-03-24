@@ -47,5 +47,5 @@
 (global-set-key (kbd "C-0") 'c++-mode)
 
 (global-set-key "\C-xp" 'compile)
-(global-set-key "\C-xr" 'recompile)
+;; (global-set-key "\C-xr" 'recompile)
 (global-set-key "\C-xg" 'goto-line)
