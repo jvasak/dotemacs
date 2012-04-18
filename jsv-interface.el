@@ -25,7 +25,7 @@
 (require 'color-theme)
 (color-theme-initialize)
 
-(color-theme-charcoal-black)
+(color-theme-jsc-dark)
 
 (global-set-key (kbd "C-<kp-1>") 'color-theme-calm-forest)
 (global-set-key (kbd "C-<kp-2>") 'color-theme-charcoal-black)
