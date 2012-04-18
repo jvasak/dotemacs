@@ -1,6 +1,6 @@
 ;; Set up GIT bindings
 (require 'magit)
-(require 'magit-svn)
+(add-hook 'magit-mode-hook 'turn-on-magit-svn)
 (global-set-key (kbd "<f8>") 'magit-status)
 
 ;; Set up SVN bindings
