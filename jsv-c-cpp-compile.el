@@ -1,6 +1,6 @@
 ;; https://github.com/genehack/smart-tab
-(require 'smart-tab)
-(global-smart-tab-mode 1)
+;; (require 'smart-tab)
+;; (global-smart-tab-mode 1)
 
 (require 'vista-c-style)
 (add-hook 'c-mode-common-hook 'vista-set-c-style)
