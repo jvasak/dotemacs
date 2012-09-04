@@ -1,0 +1,7 @@
+(add-to-list 'load-path "/usr/bin/ack")
+(autoload 'ack-same "full-ack" nil t)
+(autoload 'ack "full-ack" nil t)
+(autoload 'ack-find-same-file "full-ack" nil t)
+(autoload 'ack-find-file "full-ack" nil t)
+(setq ack-use-environment nil)
+(setq ack-prompt-for-directory t)
