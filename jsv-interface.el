@@ -19,13 +19,13 @@
       '((width . 120)
 	(height . 74) 
 	;;(alpha 85 50) 
-	(font . "Liberation Mono-10:regular")))
+	(font . "Liberation Mono-8:regular")))
 
 ;; set up pleasing color theme
 (require 'color-theme)
 (color-theme-initialize)
 
-(color-theme-jsc-dark)
+(color-theme-calm-forest)
 
 (global-set-key (kbd "C-<kp-1>") 'color-theme-calm-forest)
 (global-set-key (kbd "C-<kp-2>") 'color-theme-charcoal-black)
