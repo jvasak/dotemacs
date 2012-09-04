@@ -1,11 +1,11 @@
 ;; Set up GIT bindings
 (require 'magit)
-(add-hook 'magit-mode-hook 'turn-on-magit-svn)
+;; (add-hook 'magit-mode-hook 'turn-on-magit-svn)
 (global-set-key (kbd "<f8>") 'magit-status)
 
 ;; Set up SVN bindings
-(require 'psvn)
-(global-set-key (kbd "C-<f8>") 'svn-status)
+;; (require 'psvn)
+;; (global-set-key (kbd "C-<f8>") 'svn-status)
 
 ;; quick revert buffer
 (defun my-revert-buffer ()
