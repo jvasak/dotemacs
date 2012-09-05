@@ -25,7 +25,13 @@
 (require 'color-theme)
 (color-theme-initialize)
 
-(color-theme-calm-forest)
+(if (file-exists-p "~/emacs/tomorrow-theme")
+    (progn
+      (add-to-list 'load-path "~/emacs/tomorrow-theme/GNU Emacs/")
+      (require 'color-theme-tomorrow)
+      (color-theme-tomorrow-night-eighties)
+      (global-set-key (kbd "C-<kp-0>") 'color-theme-tomorrow-night-eighties))
+  (color-theme-calm-forest))
 
 (global-set-key (kbd "C-<kp-1>") 'color-theme-calm-forest)
 (global-set-key (kbd "C-<kp-2>") 'color-theme-charcoal-black)
