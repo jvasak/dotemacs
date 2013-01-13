@@ -61,9 +61,19 @@
 (load-library "jsv-org")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; doc-mode setup  - asciidoc
+;; Setup various markup modes for ducmentation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load-library "jsv-asciidoc")
+(load-library "jsv-markup")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; go-mode setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load-library "jsv-go")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; json-mode setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load-library "jsv-json")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GPG setup
@@ -82,7 +92,7 @@
  '(blink-cursor-mode nil)
  '(c-echo-syntactic-information-p t)
  '(column-number-mode t)
- '(compilation-scroll-output 'first-error)
+ '(compilation-scroll-output (quote first-error))
  '(delete-selection-mode t)
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
@@ -90,9 +100,16 @@
  '(make-backup-files nil)
  '(menu-bar-mode nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
+ '(org-agenda-files (quote ("~/Dropbox/gtd/gtd.org")))
  '(region ((((class color) (background dark)) (:background "#BFAB91"))))
  '(tool-bar-mode nil))
 
 ;; Default to google-chrome browser
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

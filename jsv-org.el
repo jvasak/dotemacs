@@ -1,8 +1,5 @@
 ;; Org mode stuff, not in global config
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
 
 (require 'org-install)
 
@@ -11,19 +8,31 @@
 (require 'org-checklist)
 (require 'htmlize)
 
+(setq org-directory (expand-file-name "~/Dropbox/gtd/"))
+
+(setq org-default-notes-file   (format "%s/%s" org-directory "gtd.org"))
+(setq org-agenda-files        '((expand-file-name "~/Dropbox/gtd/gtd.org")))
+
+;; Custom key bindings
+(global-set-key (kbd "<f2>") (lambda () (interactive) (find-file org-default-notes-file)))
+(global-set-key (kbd "<f12>")   'org-agenda)
+(global-set-key (kbd "<f11>")   'org-capture)
+(global-set-key (kbd "<f5>")    'org-clock-in)
+(global-set-key (kbd "<f6>")    'org-clock-goto)
+(global-set-key (kbd "<f7>")    'org-clock-out)
+(global-set-key "\C-cl"         'org-store-link)
+
+
 ;; ditaa
 (setq org-ditaa-jar-path "~/emacs/org-mode/contrib/scripts/ditaa.jar")
 
 (setq org-drawers '("PROPERTIES" "CLOCK" "LOGBOOK"))
 (setq org-log-into-drawer t)
-;; (setq org-clock-into-drawer t)
-
+(setq org-clock-into-drawer t)
 
 ;;
 ;; Customize variables
 ;;
-(setq org-agenda-files (quote ("~/Dropbox/gtd/gtd.org"
-                               "~/Dropbox/gtd/incoming.org")))
 (setq org-tags-column -88)
 (setq org-agenda-tags-column -100)
 (setq org-use-fast-todo-selection t)
@@ -61,9 +70,9 @@
 (setq org-clock-persistence-insinuate)
 ;;
 ;; Yes it's long... but more is better ;)
-;;(setq org-clock-history-length 10)
+(setq org-clock-history-length 10)
 ;; Resume clocking task on clock-in if the clock is open
-;;(setq org-clock-in-resume t)
+(setq org-clock-in-resume t)
 ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
 ;; (setq org-clock-out-remove-zero-time-clocks t)
 ;; Don't clock out when moving task to a done state
@@ -73,32 +82,22 @@
 ;; Agenda clock report parameters (no links, 2 levels deep)
 ;;(setq org-agenda-clockreport-parameter-plist (quote (:link nil :maxlevel 2)))
 
-;; Custom key bindings
-(global-set-key (kbd "<f12>")   'org-agenda)
-(global-set-key (kbd "<f11>")   'org-capture)
-(global-set-key (kbd "<f5>")    'org-clock-in)
-(global-set-key (kbd "<f6>")    'org-clock-goto)
-(global-set-key (kbd "<f7>")    'org-clock-out)
-
-
 ;; Define tags
 (setq org-tag-alist '((:startgroup . nil)
-                      ("@work" . ?w)
-                      ("@computer" . ?c)
-                      ("@out" . ?o)
+                      ("ssrp"  . ?s)
+                      ("rtt"   . ?r)
+                      ("dhs"   . ?d)
+                      ("cp5"   . ?5)
+                      ("vista" . ?v)
                       (:endgroup . nil)
-                      ("NEXT" . ?N)
-                      ("SCHED" . ?S)
-                      (:newline)
-                      ("call" . ?p)
+                      ("jira"  . ?j)
+                      ("call"  . ?c)
                       ("email" . ?e)
-                      ("notes" . ?n)
-                      ("finance" . ?f)))
+                      ("notes" . ?n)))
 
 
 ;; Define keywords and state transitions
 (setq org-todo-keywords (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
-                                (sequence "BUILD(b!)" "MAP-COPY(m!)" "BURN-IN(B!)" "TIE-DOWN(T!)" "|" "DELIVERED(D!)")
                                 (sequence "WAITING(W)" "SOMEDAY(S)" "PROJECT(P)" "|" "CANCELLED(C)"))))
 
 (setq org-todo-keyword-faces (quote (
@@ -109,33 +108,14 @@
                                      ("SOMEDAY" :foreground "magenta" :weight bold)
                                      ("CANCELLED" :foreground "forest green" :weight bold)
                                      ("PROJECT" :foreground "dark cyan" :weight bold)
-                                     ("BUILD" :foreground "red" :weight bold)
-                                     ("MAP_COPY" :foreground "orange" :weight bold)
-                                     ("BURN-IN" :foreground "yellow" :weight bold)
-                                     ("TIE-DOWN" :foreground "blue" :weight bold)
-                                     ("DELIVERED" :foreground "violet" :weight bold)
                                      )))
-
-;;(setq org-todo-state-tags-triggers
-;;      (quote (("CANCELLED" ("CANCELLED" . t))
-;;              ("WAITING" ("WAITING" . t) ("NEXT"))
-;;              ("SOMEDAY" ("WAITING" . t))
-;;              (done ("NEXT") ("WAITING"))
-;;              ("TODO" ("WAITING") ("CANCELLED"))
-;;              ("STARTED" ("WAITING"))
-;;              ("PROJECT" ("CANCELLED") ("PROJECT" . t)))))
-
-(setq org-todo-state-tags-triggers
-      (quote (("WAITING" ("NEXT"))
-              ("SOMEDAY" ("NEXT"))
-              (done ("NEXT")))))
 
 ;; Change task state to STARTED when clocking in
 (setq org-clock-in-switch-to-state "STARTED")
 
 ;; Useful to find projects with no next action defined
-(setq org-stuck-projects (quote ("/PROJECT" ("WAITING") ("NEXT" "SCHED") "")))
-
+(setq org-stuck-projects 
+      '("+PROJECT/-DONE" ("TODO" "STARTED") () ""))
 
 ;; Agenda column format
 (setq org-columns-default-format
@@ -145,23 +125,17 @@
 (setq org-global-properties
       '(("Effort_ALL" . "0 0:30 1:00 2:00 4:00 6:00 8:00 16:00 24:00 32:00 40:00 80:00")))
 
-
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
-
-(setq org-directory "~/Dropbox/gtd/")
-(setq org-mobile-directory "~/Dropbox/MobileOrg")
-(setq org-mobile-inbox-for-pull "~/Dropbox/gtd/incoming.org")
-
-(setq org-default-notes-file (concat org-directory "gtd.org"))
 
 ;; templates for TODO tasks
 (setq org-capture-templates
       '(
-        ("t" "Todo" entry (file+headline "~/Dropbox/gtd/gtd.org" "Unfiled")
+        ("t" "Todo"        entry (file "~/Dropbox/gtd/gtd.org")
          "* TODO %? \n %i")
-        ("a" "Active Todo" entry (file+headline "~/Dropbox/gtd/gtd.org" "Unfiled")
+        ("a" "Active Todo" entry (file "~/Dropbox/gtd/gtd.org")
          "* TODO %? \n %i" ":clock-in")
-        ))
+        )
+      )
 
 ;;
 ;; Refile definition
@@ -179,27 +153,29 @@
 ; Targets complete in steps so we start with filename, TAB shows the next level of targets etc 
 (setq org-outline-path-complete-in-steps t)
 
-
-;;
-;; Agenda views
-;;
 (setq org-agenda-custom-commands
       '(
-
-        ("w" "Standard Agenda View"
-         ((agenda "" ((org-deadline-warning-days 0)))
-          (tags-todo "NEXT")
-          (tags-todo "CATEGORY=\"production\"-TODO=\"PROJECT\"")
-          (tags-todo "-NEXT+TODO=\"TODO\"|-NEXT+TODO=\"STARTED\"")
-          (tags-todo "TODO=\"WAITING\"")
-          )
-         ((org-agenda-files '("~/Dropbox/gtd/gtd.org"))))
-
-        ("r" "Refile items" tags "REFILE" ((org-agenda-todo-ignore-with-date nil)))
-
+        ("w" "Agenda and Task Lists for Work"
+         ((agenda "" 
+                  ((org-agenda-ndays 7)
+                   (org-agenda-start-on-weekday 0)
+                   ;; (org-agenda-time-grid nil)
+                   (org-agenda-show-log t)))
+          (todo "STARTED"
+                ((org-agenda-sorting-strategy '(tag-up priority-down))
+                 (org-agenda-todo-keyword-format "")))
+          (todo "TODO"
+                ((org-agenda-sorting-strategy '(tag-up priority-down))
+                 (org-agenda-todo-keyword-format "")))
+          (todo "PROJECT"
+                ((org-agenda-todo-keyword-format "")))
+          (todo "WAITING")
+          (todo "SOMEDAY"))
+         )
         )
-
       )
+
+
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -266,6 +242,8 @@
 (require 'org-latex)
 (setq org-export-latex-listings t)
 
+(setenv "PATH" (concat "/usr/local/texlive/2012/bin/x86_64-linux:"
+                       (getenv "PATH")))
 
 ;; Originally taken from Bruno Tavernier: http://thread.gmane.org/gmane.emacs.orgmode/31150/focus=31432
 ;; but adapted to use latexmk 4.20 or higher.
@@ -290,8 +268,8 @@
 ;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
 (setq org-export-latex-packages-alist
       '(("" "graphicx" t)
-            ("" "longtable" nil)
-            ("" "float" nil)))
+        ("" "longtable" nil)
+        ("" "float" nil)))
 
 (defun my-auto-tex-parameters ()
       "Automatically select the tex packages to include."
