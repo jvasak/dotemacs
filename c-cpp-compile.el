@@ -6,14 +6,6 @@
 (add-hook 'c-mode-common-hook 'vista-set-c-style)
 (add-hook 'c-mode-common-hook 'vista-make-newline-indent)
 
-(require 'rainbow-delimiters)
-(add-hook 'c-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'c++-mode-hook 'rainbow-delimiters-mode)
-(setq-default frame-background-mode 'dark)
-
-;; c/c++ tempo stuff
-(require 'tempo-c-cpp)
-
 ;;mode-compile
 ;; (autoload 'mode-compile "mode-compile"
 ;;   "Command to compile current buffer file based on the major mode" t)
@@ -41,12 +33,7 @@
 ;; http://stackoverflow.com/questions/3311577/when-using-two-frames-in-emacs-how-do-i-prevent-the-compilation-buffer-from-sho
 (setq-default display-buffer-reuse-frames t)
 
-
-(global-set-key (kbd "C-<f9>") 'auto-fill-mode)
-(global-set-key (kbd "S-<f9>") 'toggle-truncate-lines)
-(global-set-key (kbd "M-<f9>") 'whitespace-mode)
 (global-set-key (kbd "C-0") 'c++-mode)
 
 (global-set-key "\C-xp" 'compile)
 ;; (global-set-key "\C-xr" 'recompile)
-(global-set-key "\C-xg" 'goto-line)

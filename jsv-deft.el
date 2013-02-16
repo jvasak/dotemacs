@@ -1,8 +1,0 @@
-(require 'deft)
-(if (file-exists-p "~/Dropbox/")
-    (setq deft-directory "~/Dropbox/notes")
-  (setq deft-directory "~/notes"))
-(setq deft-extension "org")
-(setq deft-text-mode 'org-mode)
-(setq deft-use-filename-as-title t)
-(global-set-key [f1] 'deft)

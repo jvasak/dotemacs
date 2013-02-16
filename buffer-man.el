@@ -18,3 +18,11 @@
   (mapc 'kill-buffer 
         (delq (current-buffer) 
               (remove-if-not 'buffer-file-name (buffer-list)))))
+
+;; quick revert buffer
+(defun my-revert-buffer ()
+  "Reverts buffer nicely for VC changes"
+  (interactive)
+  (revert-buffer t t t)
+  )
+(global-set-key (kbd "<f4>") 'my-revert-buffer)
