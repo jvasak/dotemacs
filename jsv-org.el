@@ -3,7 +3,6 @@
 
 (require 'org-install)
 
-(add-to-list 'load-path "~/emacs/org-mode/contrib/lisp/")
 (require 'org-export-generic)
 (require 'org-checklist)
 (require 'htmlize)
@@ -21,10 +20,6 @@
 (global-set-key (kbd "<f6>")    'org-clock-goto)
 (global-set-key (kbd "<f7>")    'org-clock-out)
 (global-set-key "\C-cl"         'org-store-link)
-
-
-;; ditaa
-(setq org-ditaa-jar-path "~/emacs/org-mode/contrib/scripts/ditaa.jar")
 
 (setq org-drawers '("PROPERTIES" "CLOCK" "LOGBOOK"))
 (setq org-log-into-drawer t)
