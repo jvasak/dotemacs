@@ -76,6 +76,11 @@
           :after (progn
                    (add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/oldexp/")
                    (load-library "jsv-org")))
+
+   (:name ack
+          :after (progn
+                   (setq ack-guess-type t)
+                   (add-to-list 'ack-mode-type-map '((python-mode) . "python"))))
    ))
 
 ; list all packages you want installed
@@ -99,11 +104,6 @@
 ;; ;; C/C++ programming
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-library "c-cpp-compile")
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; Search
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load-library "ack-opts")
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; Buffer management
