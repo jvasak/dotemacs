@@ -18,7 +18,7 @@
 ;; 	;;(alpha 85 50) 
 ;; 	(font . "Liberation Mono-7:regular")))
 
-(set-face-attribute 'default nil :font "Liberation Mono" :height 75)
+;; (set-face-attribute 'default nil :font "Liberation Mono" :height 75)
 
 (defun v-resize (key)
   "interactively resize the window"  
