@@ -18,11 +18,10 @@
 
 (setq 
  el-get-sources
- '((:name color-theme-tango
+ '((:name twilight-anti-bright-theme
           :after (progn
-                   (color-theme-initialize)
-                   (color-theme-tango)))
-   
+                   (load-theme 'twilight-anti-bright t)))
+
    (:name deft
           :after (progn
                    (if (file-exists-p "~/Dropbox/")
@@ -137,6 +136,7 @@
  '(c-echo-syntactic-information-p t)
  '(column-number-mode t)
  '(compilation-scroll-output (quote first-error))
+ '(custom-safe-themes (quote ("159bb8f86836ea30261ece64ac695dc490e871d57107016c09f286146f0dae64" default)))
  '(delete-selection-mode t)
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
