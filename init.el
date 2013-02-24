@@ -60,8 +60,16 @@
           :after (progn
                    (setq twittering-use-master-password t)))
 
+   (:name asciidoc
+          :type git
+          :url "https://github.com/metaperl/asciidoc-el"
+          :load "asciidoc.el"
+          :compile ("asciidoc.el")
+          :features asciidoc)
+
    (:name doc-mode
           :after (progn
+                   (autoload 'doc-mode "doc-mode" nil t)
                    (add-to-list 'auto-mode-alist '("\\.adoc$" . doc-mode))
                    (add-hook 'doc-mode-hook
                              '(lambda ()
