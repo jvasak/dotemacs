@@ -88,6 +88,21 @@
           :after (progn
                    (setq ack-guess-type t)
                    (add-to-list 'ack-mode-type-map '((python-mode) . "python"))))
+
+   (:name mmm-mode
+          :after (progn
+                   (require 'mmm-auto)
+                   (setq mmm-global-mode 'maybe)))
+
+   (:name mmm-mako
+          :type git
+          :url "https://github.com/emacsmirror/mmm-mako.git"
+          :load "mmm-mako.el"
+          :compile ("mmm-mako.el")
+          :after (progn
+                   (add-to-list 'auto-mode-alist '("\\.mak\\'" . html-mode))
+                   (mmm-add-mode-ext-class 'html-mode "\\.mak\\'" 'mako)
+                   (global-set-key "\M-p"  'mmm-parse-buffer)))
    ))
 
 ; list all packages you want installed
