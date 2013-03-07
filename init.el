@@ -103,6 +103,12 @@
                    (add-to-list 'auto-mode-alist '("\\.mak\\'" . html-mode))
                    (mmm-add-mode-ext-class 'html-mode "\\.mak\\'" 'mako)
                    (global-set-key "\M-p"  'mmm-parse-buffer)))
+
+   (:name haskell-mode
+          :after (progn
+                   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+                   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+                   (add-to-list 'completion-ignored-extensions ".hi")))
    ))
 
 ; list all packages you want installed
