@@ -16,11 +16,18 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 (load-library "el-helper")
 
-(setq 
+(setq
  el-get-sources
- '((:name twilight-anti-bright-theme
+ '(
+   ;; (:name twilight-anti-bright-theme
+   ;;        :after (progn
+   ;;                 (load-theme 'twilight-anti-bright t)))
+
+   (:name cyberpunk-theme
+          :type git
+          :url "https://github.com/n3mo/cyberpunk-theme.el.git"
           :after (progn
-                   (load-theme 'twilight-anti-bright t)))
+                   (load-theme 'cyberpunk t)))
 
    (:name deft
           :after (progn
@@ -31,7 +38,7 @@
                    (setq deft-text-mode 'org-mode)
                    (setq deft-use-filename-as-title t)
                    (global-set-key (kbd "<f1>") 'deft)))
-   
+
    (:name magit				; git meet emacs, and a binding
           :after (progn
                    (global-set-key (kbd "<f8>") 'magit-status)))
@@ -41,7 +48,7 @@
                    (add-hook 'c-mode-hook 'rainbow-delimiters-mode)
                    (add-hook 'c++-mode-hook 'rainbow-delimiters-mode)
                    (setq-default frame-background-mode 'dark)))
-   
+
    (:name javascript-mode
           :type http
           :url "http://www.karllandstrom.se/downloads/emacs/javascript.el"
@@ -116,7 +123,7 @@
       (append
        '(el-get
          minimap
-         tempo-c-cpp
+         ;;tempo-c-cpp
          auctex
          )
        (mapcar 'el-get-source-name el-get-sources)))
@@ -149,6 +156,8 @@
 ;; One-time stuff
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
+(electric-indent-mode +1)
+(electric-pair-mode +1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
