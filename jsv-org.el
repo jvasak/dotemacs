@@ -3,14 +3,14 @@
 
 (require 'org-install)
 
-(require 'org-export-generic)
+;; (require 'org-export-generic)
 (require 'org-checklist)
 (require 'htmlize)
 
-(setq org-directory (expand-file-name "~/Dropbox/gtd/"))
+(setq org-directory "~/Dropbox/gtd/")
 
 (setq org-default-notes-file   (format "%s/%s" org-directory "gtd.org"))
-(setq org-agenda-files        '((expand-file-name "~/Dropbox/gtd/gtd.org")))
+(setq org-agenda-files        '("~/Dropbox/gtd/gtd.org"))
 
 ;; Custom key bindings
 (global-set-key (kbd "<f2>") (lambda () (interactive) (find-file org-default-notes-file)))
