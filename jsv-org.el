@@ -125,10 +125,8 @@
 ;; templates for TODO tasks
 (setq org-capture-templates
       '(
-        ("t" "Todo"        entry (file "~/Dropbox/gtd/gtd.org")
+        ("t" "Todo"        entry (file+headline "~/Dropbox/gtd/gtd.org" "Active")
          "* TODO %? \n %i")
-        ("a" "Active Todo" entry (file "~/Dropbox/gtd/gtd.org")
-         "* TODO %? \n %i" ":clock-in")
         )
       )
 
