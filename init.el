@@ -115,6 +115,23 @@
 		   (load-theme 'cyberpunk t)))
    (:name magit
 	  :after (progn
+		   (setq magit-repo-dirs '("~/src/vrisys"
+					   "~/src/common-cpp"
+					   "~/src/vri-core"
+					   "~/src/uis"))
+		   (setq magit-repo-dirs-depth 1)
+
+		   ;; full screen magit-status
+		   (defadvice magit-status (around magit-fullscreen activate)
+		     (window-configuration-to-register :magit-fullscreen)
+		     ad-do-it
+		     (delete-other-windows))
+
+		   ;; restore previously hidden windows
+		   (defadvice magit-quit-window (around magit-restore-screen activate)
+		     ad-do-it
+		     (jump-to-register :magit-fullscreen))
+
 		   (global-set-key (kbd "<f8>") 'magit-status)))
 
    (:name deft
