@@ -139,7 +139,7 @@
 		   (if (file-exists-p "~/Dropbox/")
 		       (setq deft-directory "~/Dropbox/notes")
 		     (setq deft-directory "~/notes"))
-		   (setq deft-extension "org")
+		   (setq deft-extension "txt")
 		   (setq deft-text-mode 'org-mode)
 		   (setq deft-use-filename-as-title t)
 		   (global-set-key (kbd "<f1>") 'deft)))
