@@ -107,6 +107,14 @@
    emacs-w3m
    weechat
 
+   (:name auctex
+	  :after (progn
+		   (defun tweak-latex-formatting ()
+		     (setq LaTeX-item-indent 0)
+		     (add-to-list 'LaTeX-verbatim-environments "lstlisting")
+		     (TeX-normal-mode))
+		   (add-hook 'LaTeX-mode-hook 'tweak-latex-formatting)))
+
    (:name cyberpunk-theme
 	  :type git
 	  :url "https://github.com/n3mo/cyberpunk-theme.el.git"
