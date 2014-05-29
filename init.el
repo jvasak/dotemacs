@@ -161,11 +161,10 @@
 	  :after (progn
 		   (setq twittering-use-master-password t)))
 
-   (:name rainbow-delimiters
-	  :features "rainbow-delimiters"
-	  :after (progn
-		   (global-rainbow-delimiters-mode)
-		   (setq-default frame-background-mode 'dark)))
+   ;; (:name rainbow-delimiters
+   ;;	  :features "rainbow-delimiters"
+   ;;	  :after (progn
+   ;;		   (global-rainbow-delimiters-mode)))
 
    (:name jedi
 	  :after (progn
