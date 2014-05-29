@@ -249,6 +249,14 @@
 (global-set-key (kbd "S-<print>") 'ps-spool-region-with-faces)
 (global-set-key (kbd "C-<print>") 'ps-despool)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Go programming
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(autoload 'go-mode "/usr/share/emacs/site-lisp/golang/go-mode.el")
+(autoload 'gofmt-before-save "/usr/share/emacs/site-lisp/golang/go-mode.el")
+(autoload 'godoc "/usr/share/emacs/site-lisp/golang/go-mode.el")
+(add-to-list 'auto-mode-alist (cons "\\.go\\'" 'go-mode))
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; C/C++ programming
