@@ -210,6 +210,20 @@
 	  :after (progn
 		   (setq jedi:setup-keys t)
 		   (add-hook 'python-mode-hook 'jedi:setup)))
+
+   (:name projectile
+	  :after (progn
+		   (projectile-global-mode)))
+
+   ;; (:name smex
+   ;;	  :after (progn
+   ;;		   (global-set-key (kbd "M-x") 'smex)))
+
+   (:name helm
+	  :after (progn
+		   (helm-mode t)))
+
+   helm-ls-git
    ))
 
 (setq my-packages
