@@ -107,7 +107,28 @@
  '(el-get
    emacs-w3m
    weechat
+   asciidoc
 
+   (:name markdown-mode-css
+	  :type git
+	  :url "https://github.com/michaelamie/markdown-mode-css")
+
+   (:name markdown-mode
+	  :after (progn
+		   ;; (defun jsv/setup-markdown-mode ()
+		   ;;   (visual-line-mode t))
+		   ;; (add-hook ‘markdown-mode-hook ’jsv/setup-markdown-mode)
+		   (defvar markdown-css-dir (expand-file-name "el-get/markdown-mode-css/css" user-emacs-directory))
+		   (setq markdown-css-path (expand-file-name "github.css" markdown-css-dir))
+		   (setq markdown-command "pandoc --smart -f markdown -t html")))
+
+   (:name doc-mode
+	  :after (progn
+		   (add-to-list 'auto-mode-alist '("\\.adoc$" . doc-mode))))
+
+   (:name pandoc-mode
+	  :after (progn
+		   (add-hook 'markdown-mode-hook 'turn-on-pandoc)))
    (:name auctex
 	  :after (progn
 		   (defun tweak-latex-formatting ()
