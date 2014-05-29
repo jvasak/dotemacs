@@ -84,6 +84,7 @@
       (concat (file-name-as-directory user-emacs-directory) "el-get/"))
 (setq el-get-user-package-directory
       (concat (file-name-as-directory user-emacs-directory) "el-get-init-files/"))
+(setq el-get-github-default-url-type 'https)
 
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
