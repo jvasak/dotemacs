@@ -109,6 +109,7 @@
    weechat
    asciidoc
    haskell-mode
+   powerline
 
    (:name markdown-mode-css
 	  :type git
@@ -138,12 +139,29 @@
 		     (TeX-normal-mode))
 		   (add-hook 'LaTeX-mode-hook 'tweak-latex-formatting)))
 
-   (:name cyberpunk-theme
+   ;; (:name cyberpunk-theme
+   ;;	  :type git
+   ;;	  :url "https://github.com/n3mo/cyberpunk-theme.el.git"
+   ;;	  :load "cyberpunk-theme.el"
+   ;;	  :after (progn
+   ;;		   (load-theme 'cyberpunk t)))
+
+   ;; (:name tangotango-theme
+   ;;	  :type git
+   ;;	  :url "https://github.com/juba/color-theme-tangotango.git"
+   ;;	  :load "tangotango-theme.el"
+   ;;	  :after (progn
+   ;;		   (load-theme 'tangotango t)))
+
+   (:name moe-theme
 	  :type git
-	  :url "https://github.com/n3mo/cyberpunk-theme.el.git"
-	  :load "cyberpunk-theme.el"
+	  :url "https://github.com/kuanyui/moe-theme.el"
+	  :load "moe-theme.el"
 	  :after (progn
-		   (load-theme 'cyberpunk t)))
+		   ;; (setq moe-theme-mode-line-color 'orange)
+		   (powerline-moe-theme)
+		   (load-theme 'moe-dark t)))
+
    (:name magit
 	  :after (progn
 		   (setq magit-repo-dirs '("~/src/vrisys"
@@ -318,7 +336,6 @@
  '(c-echo-syntactic-information-p t)
  '(column-number-mode t)
  '(compilation-scroll-output (quote first-error))
- '(custom-safe-themes (quote ("159bb8f86836ea30261ece64ac695dc490e871d57107016c09f286146f0dae64" default)))
  '(delete-selection-mode t)
  '(global-font-lock-mode t nil (font-lock))
  '(make-backup-files nil)
