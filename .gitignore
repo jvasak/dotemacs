@@ -1,5 +1,9 @@
 /auto-save-list/
 /el-get/
 /elpa/
-*.elc/tramp
+*.elc
 /tramp
+/projectile-bookmarks.eld
+/ac-comphist.dat
+/url/
+/.python-environments/
