@@ -108,6 +108,7 @@
    emacs-w3m
    weechat
    asciidoc
+   haskell-mode
 
    (:name markdown-mode-css
 	  :type git
