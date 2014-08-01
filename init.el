@@ -224,6 +224,15 @@
 		   (helm-mode t)))
 
    helm-ls-git
+
+   (:name go-mode
+	  :type git
+	  :url "https://github.com/dominikh/go-mode.el"
+	  :load "go-mode.el"
+	  :after (progn
+		   (setq gofmt-command "~/go/bin/gofmt")
+		   (add-hook 'before-save-hook 'gofmt-before-save)
+		   ))
    ))
 
 (setq my-packages
@@ -248,15 +257,6 @@
 (global-set-key (kbd "<print>")   'ps-spool-buffer-with-faces)
 (global-set-key (kbd "S-<print>") 'ps-spool-region-with-faces)
 (global-set-key (kbd "C-<print>") 'ps-despool)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Go programming
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(autoload 'go-mode "/usr/share/emacs/site-lisp/golang/go-mode.el")
-(autoload 'gofmt-before-save "/usr/share/emacs/site-lisp/golang/go-mode.el")
-(autoload 'godoc "/usr/share/emacs/site-lisp/golang/go-mode.el")
-(add-to-list 'auto-mode-alist (cons "\\.go\\'" 'go-mode))
-(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; C/C++ programming
