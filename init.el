@@ -253,6 +253,11 @@
 		   (setq gofmt-command "~/go/bin/gofmt")
 		   (add-hook 'before-save-hook 'gofmt-before-save)
 		   ))
+
+   (:name fic-mode
+	  :after (progn
+		   (require 'fic-mode)
+		   (add-hook 'prog-mode-hook 'fic-mode)))
    ))
 
 (setq my-packages
