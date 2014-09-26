@@ -73,6 +73,7 @@
 (global-set-key (kbd "C-<f9>") 'auto-fill-mode)
 (global-set-key (kbd "S-<f9>") 'toggle-truncate-lines)
 (global-set-key (kbd "M-<f9>") 'whitespace-mode)
+(global-set-key (kbd "S-C-<f9>") 'global-hl-line-mode)
 
 (global-set-key "\C-xg" 'goto-line)
 
