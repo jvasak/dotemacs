@@ -112,6 +112,11 @@
    haskell-mode
    powerline
 
+   (:name auto-complete
+	  :after (progn
+		   (require 'auto-complete-config)
+		   (ac-config-default)))
+
    (:name markdown-mode-css
 	  :type git
 	  :url "https://github.com/michaelamie/markdown-mode-css")
@@ -250,6 +255,8 @@
 	  :url "https://github.com/dominikh/go-mode.el"
 	  :load "go-mode.el"
 	  :after (progn
+		   (require 'go-autocomplete)
+		   (require 'auto-complete-config)
 		   (setq gofmt-command "~/go/bin/gofmt")
 		   (add-hook 'before-save-hook 'gofmt-before-save)
 		   ))
