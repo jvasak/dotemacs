@@ -159,9 +159,27 @@
 	  :url "https://github.com/kuanyui/moe-theme.el"
 	  :load "moe-theme.el"
 	  :after (progn
-		   ;; (setq moe-theme-mode-line-color 'orange)
-		   (powerline-moe-theme)
-		   (load-theme 'moe-dark t)))
+		   (defun my-moe-setup ()
+		     (setq moe-theme-mode-line-color 'orange)
+		     (powerline-moe-theme)
+		     (load-theme 'moe-dark t)
+		     (if window-system
+			 (progn
+			   (set-background-color "#000011")
+			   (set-foreground-color "#c6c6c6")
+			   )
+		       (progn
+			 (set-background-color "color-16")
+			 (set-foreground-color "white")
+			 ))
+		     )
+		   (if (daemonp)
+		       (add-hook 'after-make-frame-functions
+				 (lambda (frame)
+				   (with-selected-frame frame
+				     (my-moe-setup))))
+		     (my-moe-setup))	   
+		   ))
 
    (:name magit
 	  :after (progn
