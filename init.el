@@ -374,6 +374,9 @@
 ;;(electric-indent-mode +1)
 (electric-pair-mode +1)
 
+;; allow c-x n n to execute narrow-to-region without warning
+(put 'narrow-to-region 'disabled nil)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
